@@ -12,6 +12,25 @@ This version is based on v2.10.0 and has been modified to:
 
 To see all modifications, diff the files in the master branch to the version branch. Eg: `master` vs `v2.10.0`.
 
+## StarRocks Dialect
+Forked from [gregrahn](https://github.com/gregrahn/tpcds-kit/tree/master).
+
+Modifiations:
+1. `(cast('1999-02-22' as date) + 30 days)` => `date_add(cast('1999-02-22' as date), 30)`
+2. `Every derived table must have its own alias.` => add alias for them
+
+How to use it:
+```
+dsqgen \
+-DIRECTORY ../query_templates \
+-INPUT ../query_templates/templates.lst \
+-VERBOSE Y \
+-QUALIFY Y \
+-SCALE 10000 \
+-DIALECT netezza \
+-OUTPUT_DIR /tmp
+```
+
 ## Setup
 
 ### Linux
